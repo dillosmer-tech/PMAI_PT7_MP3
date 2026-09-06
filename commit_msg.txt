@@ -1,0 +1,10 @@
+Initial commit: PT7-MP3 standalone MP3 Layer III decoder
+
+- C++20 static library with stable C API
+- MPEG-1/2/2.5 Layer III decoding
+- PCM16/Float32 output
+- Streaming, robustness, resync
+- Metadata, gapless playback, seeking
+- Cross-platform: Windows/Linux/macOS
+- MIT License
+- GitHub Actions CI for macOS (Apple Clang)

@@ -1,0 +1,28 @@
+# Build directories
+build-*/
+build/
+
+# Install directories
+install-*/
+
+# IDE files
+.vs/
+.vscode/
+*.user
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Compiled artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.exe
+*.pdb
+*.ilk
+
+# Logs
+*.log

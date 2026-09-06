@@ -1,0 +1,43 @@
+name: macOS (Apple Clang)
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  macos-build:
+    name: macOS Apple Clang
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Ninja
+        run: brew install ninja
+
+      - name: Show toolchain versions
+        run: |
+          echo "=== macOS ==="
+          sw_vers
+          echo "=== Apple Clang ==="
+          clang++ --version
+          echo "=== CMake ==="
+          cmake --version
+          echo "=== Ninja ==="
+          ninja --version
+
+      - name: Configure CMake
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
