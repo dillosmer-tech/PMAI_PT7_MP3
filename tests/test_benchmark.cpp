@@ -5,6 +5,7 @@
 #include "pt7_mp3.h"
 
 #include <chrono>
+#include <cinttypes>
 #include <cmath>
 #include <cstdint>
 #include <cstdio>
@@ -304,7 +305,7 @@ void benchmark_seeking(const char* filename, const std::vector<uint8_t>& mp3) {
     auto t1 = std::chrono::steady_clock::now();
     double index_time = std::chrono::duration<double, std::milli>(t1 - t0).count();
 
-    std::printf("  Index build: %.1f ms (%zu frames)\n", index_time, info.total_frames);
+    std::printf("  Index build: %.1f ms (%" PRIu64 " frames)\n", index_time, info.total_frames);
 
     // Seek to various positions
     double positions[] = {0.0, 0.1, 0.25, 0.5, 0.75, 0.9, 0.99};
